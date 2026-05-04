@@ -115,40 +115,44 @@
         .main-title h1 { font-size: clamp(40px, 8vw, 70px); text-transform: uppercase; line-height: 0.85; }
         .main-title h1 em { font-style: normal; color: rgba(255,255,255,0.2); }
 
-        /* КНОПКИ СОЦСЕТЕЙ - ПРИНУДИТЕЛЬНО СВЕРХУ */
+/* КНОПКИ СОЦСЕТЕЙ - ФИНАЛЬНЫЙ ФИКС */
         .social-nav { 
             position: fixed; 
             bottom: 30px; 
             right: 32px; 
-            z-index: 100;
+            z-index: 9999; /* Максимальный приоритет над видео и зернистостью */
             display: flex; 
             gap: 12px; 
             animation: fadeUp 0.8s 0.3s ease both;
         }
+
         .social-btn { 
             width: 48px; 
             height: 48px; 
             border-radius: 14px; 
-            display: flex; 
+            display: flex !important; /* Принудительный флекс */
             align-items: center; 
             justify-content: center; 
-            transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(20, 20, 20, 0.8) !important; /* Сделали фон почти черным, чтобы его БЫЛО видно */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            z-index: 101;
+            text-decoration: none;
         }
+
         .social-btn:hover { 
             transform: translateY(-5px); 
-            background: rgba(255,255,255,0.15); 
-            border-color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.15) !important; 
+            border-color: rgba(255,255,255,0.5);
         }
+
         .social-btn img { 
-            width: 22px; 
-            height: 22px; 
-            object-fit: contain; 
-            transition: 0.3s;
+            width: 24px !important; 
+            height: 24px !important; 
+            display: block !important;
+            object-fit: contain;
+            pointer-events: none; /* Чтобы клик шел на ссылку, а не на картинку */
         }
 
         @keyframes fadeDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
